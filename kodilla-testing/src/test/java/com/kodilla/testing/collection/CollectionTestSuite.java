@@ -29,7 +29,7 @@ public class CollectionTestSuite {
         //when
         ArrayList<Integer> result = oddNumbersExterminator.exterminate(testListMixedNumbers);
         //then
-        Assert.assertEquals(2, testListMixedNumbers.size());
+        Assert.assertEquals(2, result.size());
 
     }
 }
