@@ -1,11 +1,21 @@
 package com.kodilla.testing.collection;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.*;
+import org.junit.rules.TestName;
 
 import java.util.ArrayList;
 
 public class CollectionTestSuite {
+    @Rule
+    public TestName name = new TestName();
+    @Before
+    public void before(){
+        System.out.println("Test " + name.getMethodName() + " begins");
+    }
+    @After
+    public void after(){
+        System.out.println("Test " + name.getMethodName() + " ends");
+    }
     @Test
     public void testOddNumbersExterminatorEmptyList(){
         //given
