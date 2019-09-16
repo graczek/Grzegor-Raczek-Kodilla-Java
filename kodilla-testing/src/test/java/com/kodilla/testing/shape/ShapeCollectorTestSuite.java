@@ -72,8 +72,8 @@ public class ShapeCollectorTestSuite {
         //when
         shapeCollector.showFigures();
         //then
-        Assert.assertEquals(triangle, shapeList.get(0));
-        Assert.assertEquals(square, shapeList.get(1));
+        Assert.assertEquals("triangle", shapeList.get(0).getShapeName());
+        Assert.assertEquals("square", shapeList.get(1).getShapeName());
     }
 
 

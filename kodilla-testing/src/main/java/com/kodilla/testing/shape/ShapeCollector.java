@@ -30,6 +30,7 @@ public class ShapeCollector {
     public void showFigures(){
         for (Shape figure: shapeList){
             System.out.println(figure.getShapeName());
+            System.out.println(figure.getField());
         }
     }
 }
