@@ -4,6 +4,10 @@ import org.junit.*;
 import org.junit.rules.TestName;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.hamcrest.core.Is.is;
 
 public class CollectionTestSuite {
     @Rule
@@ -38,8 +42,11 @@ public class CollectionTestSuite {
         testListMixedNumbers.add(46);
         //when
         ArrayList<Integer> result = oddNumbersExterminator.exterminate(testListMixedNumbers);
+        ArrayList<Integer> actual = result;
+        List<Integer> expected = Arrays.asList(4, 46);
         //then
         Assert.assertEquals(2, result.size());
+        Assert.assertThat(expected, is(actual));
 
     }
 }
