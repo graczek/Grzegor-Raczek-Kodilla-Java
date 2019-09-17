@@ -42,11 +42,10 @@ public class CollectionTestSuite {
         testListMixedNumbers.add(46);
         //when
         ArrayList<Integer> result = oddNumbersExterminator.exterminate(testListMixedNumbers);
-        ArrayList<Integer> actual = result;
         List<Integer> expected = Arrays.asList(4, 46);
         //then
         Assert.assertEquals(2, result.size());
-        Assert.assertThat(expected, is(actual));
+        Assert.assertThat(expected, is(result));
 
     }
 }
