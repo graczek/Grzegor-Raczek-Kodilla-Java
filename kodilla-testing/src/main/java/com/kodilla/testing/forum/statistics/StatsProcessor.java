@@ -2,17 +2,12 @@ package com.kodilla.testing.forum.statistics;
 
 public class StatsProcessor {
 
-    private Statistics statistics;
     private int noOfUsers;
     private int noOfPosts;
     private int noOfComments;
     private double postsPerUser;
     private double commentsPerUser;
     private double commentsPerPost;
-
-    public StatsProcessor(Statistics statistics) {
-        this.statistics = statistics;
-    }
 
     public int getNoOfUsers() {
         return noOfUsers;
@@ -38,7 +33,9 @@ public class StatsProcessor {
         return commentsPerPost;
     }
 
-    public Statistics calculateAdvStatistics(Statistics statistics){
+
+
+    public void calculateAdvStatistics(Statistics statistics){
 
         noOfUsers = statistics.usersNames().size();
         noOfPosts = statistics.postsCount();
@@ -46,16 +43,14 @@ public class StatsProcessor {
 
         if(noOfPosts == 0 || noOfUsers == 0){
             System.out.println("Cannot divide by zero!");
-            postsPerUser = 0;
-            commentsPerUser = 0;
-            commentsPerPost = 0;
+            postsPerUser = 0.0;
+            commentsPerUser = 0.0;
+            commentsPerPost = 0.0;
         } else {
             postsPerUser = (double) noOfPosts / noOfUsers;
             commentsPerUser = (double) noOfComments / noOfUsers;
             commentsPerPost = (double) noOfComments / noOfPosts;
         }
-
-        return statistics;
     }
 
     public void showStatistics(){
