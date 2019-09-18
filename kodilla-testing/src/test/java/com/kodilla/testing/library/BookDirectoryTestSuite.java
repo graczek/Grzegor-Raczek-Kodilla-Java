@@ -87,4 +87,52 @@ public class BookDirectoryTestSuite {
         assertEquals(0, theListOfBooks10.size());
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
     }
+
+    @Test
+    public void testBooksInHandsOfWhenNoBooksWithUser(){
+        //given
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        List<Book> emptyBookList = new ArrayList<>();
+        LibraryUser testUser = new LibraryUser("John", "Wayne", "82040503333");
+        when(libraryDatabaseMock.listBooksInHandsOf(testUser)).thenReturn(emptyBookList);
+
+        //when
+        List<Book> theListOfBooksWhenUserHasNone = bookLibrary.listBooksInHandsOf(testUser);
+
+        //then
+        assertEquals(0, theListOfBooksWhenUserHasNone.size());
+    }
+
+    @Test
+    public void testBooksInHandsOfWhen1BookWithUser(){
+        //given
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        List<Book> oneBookList = generateListOfNBooks(1);
+        LibraryUser testUser = new LibraryUser("John", "Wayne", "82040503333");
+        when(libraryDatabaseMock.listBooksInHandsOf(testUser)).thenReturn(oneBookList);
+
+        //when
+        List<Book> theListOfBooksWhenUserHasNone = bookLibrary.listBooksInHandsOf(testUser);
+
+        //then
+        assertEquals(1, theListOfBooksWhenUserHasNone.size());
+    }
+
+    @Test
+    public void testBooksInHandsOfWhen5BookWithUser(){
+        //given
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        List<Book> oneBookList = generateListOfNBooks(5);
+        LibraryUser testUser = new LibraryUser("John", "Wayne", "82040503333");
+        when(libraryDatabaseMock.listBooksInHandsOf(testUser)).thenReturn(oneBookList);
+
+        //when
+        List<Book> theListOfBooksWhenUserHasNone = bookLibrary.listBooksInHandsOf(testUser);
+
+        //then
+        assertEquals(5, theListOfBooksWhenUserHasNone.size());
+    }
 }

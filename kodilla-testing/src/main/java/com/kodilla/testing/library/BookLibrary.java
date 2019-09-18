@@ -19,4 +19,13 @@ public class BookLibrary {
         bookList = resultList;
         return bookList;
     }
+
+    public List<Book> listBooksInHandsOf(LibraryUser libraryUser){
+        List<Book> resultList = libraryDatabase.listBooksInHandsOf(libraryUser);
+        if(resultList.size() <= 0){
+            System.out.println("User currently has no rented books!");
+            return resultList;
+        }
+        return resultList;
+    }
 }
