@@ -1,7 +1,6 @@
 package com.kodilla.stream;
 
 
-import com.kodilla.stream.book.BookDirectory;
 import forumuser.Forum;
 import forumuser.ForumUser;
 
