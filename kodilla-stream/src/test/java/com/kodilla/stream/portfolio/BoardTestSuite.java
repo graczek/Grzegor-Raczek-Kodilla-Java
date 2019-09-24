@@ -138,7 +138,7 @@ public class BoardTestSuite {
     public void testAddTaskListAverageWorkingOnTask(){
         //given
         Board project = prepareTestData();
-        LocalDate now = LocalDate.now();
+        LocalDate now = LocalDate.of(2019, 9, 24);
         //when
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
