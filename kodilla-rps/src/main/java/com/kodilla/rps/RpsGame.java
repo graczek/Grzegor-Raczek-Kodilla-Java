@@ -18,8 +18,20 @@ public class RpsGame {
     private Random rnd = new Random();
 
     public void runGame(){
-        initGame();
-        playRound();
+        checkIfNextRoundToPlay();
+        while(!end) {
+            initGame();
+            playRound();
+        }
+    }
+
+    public void checkIfNextRoundToPlay(){
+        int noOfRounds = getNoOfRounds();
+        if(noOfRounds > 0){
+            end = true;
+        } else {
+            end = false;
+        }
     }
 
     public void initGame(){
@@ -52,6 +64,7 @@ public class RpsGame {
     }
 
     public void playRound(){
+        displayRoundInfo();
         displayMoveChoiceRequest();
         playersMove = readPlayersMove();
         displayPlayersMove();
@@ -59,11 +72,18 @@ public class RpsGame {
         displayComputersMove();
         displayRoundWinnerInfo(playersMove, computersMove);
         displayScore();
+        substractRound(noOfRounds);
+        checkIfNextRoundToPlay();
 
         //policz wynik
         //pokaz wynik
         //sprawdz czy kolejna runda
         //wyswietl zwyciezce
+    }
+
+    private void displayRoundInfo() {
+        System.out.println("\nRounda " + getNoOfRounds() +":");
+        substractRound(noOfRounds);
     }
 
     public void displayMoveChoiceRequest(){
@@ -100,10 +120,6 @@ public class RpsGame {
         System.out.println("Zagranie komputera to: " + translateMoveIntoDescription(computersMove) + "\n");
     }
 
-    public void displayWinnerInfo(){
-
-    }
-
     public void displayRoundWinnerInfo(char playersMove, char computersMove){
         if(playersMove < computersMove){
             System.out.println("Wygrałeś rundę!");
@@ -131,5 +147,13 @@ public class RpsGame {
 
     public int getComputersPoints() {
         return computersPoints;
+    }
+
+    public int getNoOfRounds() {
+        return noOfRounds;
+    }
+
+    public int substractRound(int noOfRounds){
+        return noOfRounds--;
     }
 }
