@@ -17,7 +17,7 @@ public class FirstChallenge {
         } catch (ArithmeticException e) {
             System.out.println("Not possible to divide by 0! Error: " + e);
         } finally {
-            System.out.println("Why am I even here?");
+            System.out.println("Why am I even here, huh?");
         }
 
     }
