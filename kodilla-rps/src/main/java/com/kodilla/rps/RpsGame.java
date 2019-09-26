@@ -101,7 +101,7 @@ public class RpsGame {
     }
 
     public int pickComputersMove(){
-        return rnd.nextInt((3 - 1) + 1) + 1;
+        return rnd.nextInt(3) + 1;
     }
 
     public void displayComputersMove(){
