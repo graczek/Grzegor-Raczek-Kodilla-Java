@@ -170,6 +170,7 @@ public class RpsGame {
         return noOfRounds;
     }
 
+    //remove
     public int substractRound(){
         return noOfRounds--;
     }
