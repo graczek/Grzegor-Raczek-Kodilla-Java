@@ -11,7 +11,7 @@ public class SearchFlightsRunner {
         try {
             logic.findFlight(wroclawToBarcelona);
         } catch (RouteNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("Flight not available!");
         }
 
         try {

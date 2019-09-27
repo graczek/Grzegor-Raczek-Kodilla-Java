@@ -15,8 +15,8 @@ public class SearchFlightsLogic {
         mapOfFlights.put("BCN", true);
         mapOfFlights.put("LHR", true);
 
-        if((mapOfFlights.containsKey(departureAirport) || mapOfFlights.containsKey(arrivalAirport))
-            && mapOfFlights.containsValue(true)) {
+        if((mapOfFlights.containsKey(departureAirport) && mapOfFlights.get(departureAirport).equals(true))
+                || ((mapOfFlights.containsKey(arrivalAirport) && mapOfFlights.get(arrivalAirport).equals(true)))) {
             System.out.println("Flight is possible");
 
         } else {
