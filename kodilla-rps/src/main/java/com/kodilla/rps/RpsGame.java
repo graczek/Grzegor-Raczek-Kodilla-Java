@@ -1,19 +1,20 @@
 package com.kodilla.rps;
 
-import java.util.Random;
-import java.util.Scanner;
-
 public class RpsGame {
 
-    private String playerName;
+    //brakujace funkcjonalnosci (nowa gra/zakoncz)
+    //testy
+
     private int noOfRounds;
+    private int currentRound = 1;
     private int playersMove;
     private int computersMove;
     private int playersPoints = 0;
     private int computersPoints = 0;
 
-    private Scanner sc = new Scanner(System.in);
-    private Random rnd = new Random();
+    InputReader inputReader = new InputReader();
+    Player player = new Player();
+    Computer computer = new Computer();
 
     public void runGame(){
         initGame();
@@ -22,33 +23,33 @@ public class RpsGame {
 
     public void checkIfNextRoundToPlay(){
         int noOfRounds = getNoOfRounds();
-        if(noOfRounds > 0){
-            playRound();
-        } else {
+        if(noOfRounds == 0){
             System.out.println("Gra skończona");
             displayWinner();
+        } else {
+            playRound();
         }
     }
 
     public void initGame(){
-        System.out.println("Podaj imię: ");
-        playerName = readPlayersName();
-        System.out.println("Podaj liczbę rund do zagrania: ");
-        noOfRounds = readNoOfRounds();
+        askPlayersName();
+        player.setPlayerName(inputReader.readPlayersName());
+        askPlayerForNumberOfRounds();
+        noOfRounds = inputReader.readNoOfRounds();
         displayWelcomeInformation();
         displayRules();
     }
 
-    public String readPlayersName(){
-        return sc.nextLine();
+    public void askPlayersName(){
+        System.out.println("Podaj imię: ");
     }
 
-    public int readNoOfRounds(){
-        return sc.nextInt();
+    public void askPlayerForNumberOfRounds(){
+        System.out.println("Podaj liczbę rund do zagrania: ");
     }
 
     public void displayWelcomeInformation(){
-        System.out.println("\nWitaj " + playerName + ". Twoja gra będzie składać się z " + noOfRounds + " rund.\n");
+        System.out.println("\nWitaj " + player.getPlayerName() + ". Twoja gra będzie składać się z " + noOfRounds + " rund.\n");
     }
 
     public void displayRules(){
@@ -60,36 +61,37 @@ public class RpsGame {
     }
 
     public void playRound(){
-        displayRoundInfo();
+        displayRoundNumber();
         displayMoveChoiceRequest();
-        playersMove = readPlayersMove();
+        playersMove = inputReader.readPlayersMove();
         displayPlayersMove();
-        computersMove = pickComputersMove();
+        computersMove = computer.pickComputersMove();
         displayComputersMove();
         displayRoundWinnerInfo(determineWinningMove(playersMove, computersMove));
         displayScore();
-        substractRound();
+        noOfRounds--;
         checkIfNextRoundToPlay();
     }
 
-    private void displayRoundInfo() {
-        System.out.println("\nRounda " + getNoOfRounds() +":");
+    private void displayRoundNumber() {
+        System.out.println("\nRounda " + currentRound +":");
+        currentRound++;
     }
 
     public void displayMoveChoiceRequest(){
         System.out.println("\nWybierz ruch (1 = kamień / 2 = papier / 3 = nożyce) : \n");
     }
 
-    public int readPlayersMove(){
-        return sc.nextInt();
-    }
-
     public void displayPlayersMove(){
         System.out.println("Twoje zagranie to: " + translateMoveIntoDescription(playersMove));
     }
 
+    public void displayComputersMove(){
+        System.out.println("Zagranie komputera to: " + translateMoveIntoDescription(computersMove) + "\n");
+    }
+
     public String translateMoveIntoDescription(int move){
-        //change to switch case
+
         if(move == 1) return "kamień";
         if(move == 2) return "papier";
         if(move == 3) return "nożyce";
@@ -98,14 +100,6 @@ public class RpsGame {
         else {
             return "Niepoprawny ruch";
         }
-    }
-
-    public int pickComputersMove(){
-        return rnd.nextInt(3) + 1;
-    }
-
-    public void displayComputersMove(){
-        System.out.println("Zagranie komputera to: " + translateMoveIntoDescription(computersMove) + "\n");
     }
 
     public void displayRoundWinnerInfo(int winningCase){
@@ -128,6 +122,7 @@ public class RpsGame {
         }
     }
 
+    //returns 1 if player's move wins, -1 if computer's move wins and 0 in case of a tie
     public int determineWinningMove(int playersMove, int computersMove) {
         if(playersMove == computersMove) return 0;
         switch (playersMove) {
@@ -145,14 +140,14 @@ public class RpsGame {
 
     public void displayScore(){
         System.out.println("\nObecny Wynik: ");
-        System.out.println(playerName.toUpperCase() + ": " + getPlayersPoints() + " vs COMPUTER: " + getComputersPoints());
+        System.out.println(player.getPlayerName().toUpperCase() + ": " + getPlayersPoints() + " vs COMPUTER: " + getComputersPoints());
     }
 
     public void displayWinner(){
         if(playersPoints > computersPoints){
             System.out.println("Wygrałeś!");
         } if (playersPoints < computersPoints){
-            System.out.println("Tym razem rzegrałeś:(");
+            System.out.println("Tym razem przegrałeś:(");
         } if (playersPoints == computersPoints){
             System.out.println("Remis!");
         }
@@ -170,8 +165,4 @@ public class RpsGame {
         return noOfRounds;
     }
 
-    //remove
-    public int substractRound(){
-        return noOfRounds--;
-    }
 }
