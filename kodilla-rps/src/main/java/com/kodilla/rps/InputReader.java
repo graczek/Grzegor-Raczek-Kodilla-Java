@@ -13,6 +13,7 @@ public class InputReader {
     public int readNoOfRounds(){ return sc.nextInt(); }
 
     public int readPlayersMove(){
+        //return sc.next().charAt(0);
         return sc.nextInt();
     }
 }

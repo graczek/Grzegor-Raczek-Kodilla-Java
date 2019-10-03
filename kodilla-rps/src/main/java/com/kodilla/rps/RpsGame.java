@@ -65,6 +65,9 @@ public class RpsGame {
         displayMoveChoiceRequest();
         playersMove = inputReader.readPlayersMove();
         displayPlayersMove();
+//        if(playersMove == 'x' || playersMove == 'n'){
+//            processOtherThanMoveOption(playersMove);
+//        }
         computersMove = computer.pickComputersMove();
         displayComputersMove();
         displayRoundWinnerInfo(determineWinningMove(playersMove, computersMove));
@@ -95,12 +98,22 @@ public class RpsGame {
         if(move == 1) return "kamień";
         if(move == 2) return "papier";
         if(move == 3) return "nożyce";
-//        if(move == 'x') return "koniec gry";
-//        if(move == 'n') return "zaczynamy od nowa!";
+        if(move == 'x') return "koniec gry";
+        if(move == 'n') return "zaczynamy od nowa!";
         else {
             return "Niepoprawny ruch";
         }
     }
+
+//    public void processOtherThanMoveOption(int move){
+//        switch (move){
+//            case 'x' : break;
+//            case 'n' : {
+//                currentRound = 1;
+//                playRound();
+//            }
+//        }
+//    }
 
     public void displayRoundWinnerInfo(int winningCase){
         switch(winningCase){
