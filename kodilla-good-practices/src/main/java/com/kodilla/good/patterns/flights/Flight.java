@@ -9,8 +9,6 @@ public class Flight {
         this.destination = destination;
     }
 
-
-
     public String getOrigin() {
         return origin;
     }
