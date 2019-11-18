@@ -1,9 +1,9 @@
 package com.kodilla.good.patterns.food2door;
 
 public class Product {
-    private int id;
-    private String name;
-    private int quantity;
+    private final int id;
+    private final String name;
+    private final int quantity;
 
     public Product(int id, String name, int quantity) {
         this.id = id;

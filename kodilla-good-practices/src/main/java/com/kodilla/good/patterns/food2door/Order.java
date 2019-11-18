@@ -4,10 +4,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Order {
-    private int id;
-    private LocalDateTime date;
-    private Supplier supplier;
-    private List<Product> products;
+    private final int id;
+    private final LocalDateTime date;
+    private final Supplier supplier;
+    private final List<Product> products;
 
     public Order(int id, LocalDateTime date, Supplier supplier, List<Product> products) {
         this.id = id;
