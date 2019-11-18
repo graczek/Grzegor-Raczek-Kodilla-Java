@@ -7,17 +7,16 @@ public class SupplierService implements OrderProcessor {
 
     @Override
     public OrderConfirmation process(OrderDto orderDto) throws InvalidOrderException {
-        OrderConfirmationStatus orderConfirmationStatus = null;
+
         OrderConfirmation orderConfirmation = null;
 
         if(orderDto.isValidated() == false){
-            orderConfirmationStatus.setConfirmed(false);
             throw new InvalidOrderException();
         } else {
             final LocalDateTime orderDate = getOrderDate(orderDto);
             final int orderId = getOrderId(orderDto);
             final List<Product> orderedProductsList = getOrderedProductList(orderDto);
-            orderConfirmationStatus.setConfirmed(true);
+            OrderConfirmationStatus orderConfirmationStatus = OrderConfirmationStatus.CONFIRMED;
 
             orderConfirmation.setSupplierConfirmationNo(orderId + orderDate.toString());
             orderConfirmation.setOrderId(orderId);
