@@ -1,5 +1,6 @@
 package com.kodilla.good.patterns.flights;
 
+import java.util.List;
 import java.util.Map;
 
 public class Main {
@@ -16,22 +17,22 @@ public class Main {
         Flight flight9 = new Flight("WRO", "BCN");
 
         FlightDB flightDB = new FlightDB();
-        Map<Integer, Flight> flightsMap = flightDB.getFlightsMap();
-        flightsMap.put(1, flight1);
-        flightsMap.put(2, flight2);
-        flightsMap.put(3, flight3);
-        flightsMap.put(4, flight4);
-        flightsMap.put(5, flight5);
-        flightsMap.put(6, flight6);
-        flightsMap.put(7, flight7);
-        flightsMap.put(8, flight8);
-        flightsMap.put(9, flight9);
+        List<Flight> flightsList = flightDB.getFlightsList();
+        flightsList.add(flight1);
+        flightsList.add(flight2);
+        flightsList.add(flight3);
+        flightsList.add(flight4);
+        flightsList.add(flight5);
+        flightsList.add(flight6);
+        flightsList.add(flight7);
+        flightsList.add(flight8);
+        flightsList.add(flight9);
 
         OriginCityFlightFinderService originCityFlightsFinder = new OriginCityFlightFinderService();
-        originCityFlightsFinder.findFlight("WAW", flightsMap);
+        originCityFlightsFinder.findFlight("WAW", flightsList);
 
         DestinationCityFlightFinderService destinationCityFlightsFinder = new DestinationCityFlightFinderService();
-        destinationCityFlightsFinder.findFlight("WRO", flightsMap);
+        destinationCityFlightsFinder.findFlight("WRO", flightsList);
 
 
     }

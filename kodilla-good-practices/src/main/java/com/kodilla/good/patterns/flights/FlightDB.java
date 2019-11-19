@@ -1,14 +1,14 @@
 package com.kodilla.good.patterns.flights;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FlightDB {
 
-    private final Map<Integer, Flight> flightsMap = new HashMap<>();
+    private final List<Flight> flightsList = new ArrayList<>();
 
-    public Map<Integer, Flight> getFlightsMap() {
-        return flightsMap;
+    public List<Flight> getFlightsList() {
+        return flightsList;
     }
 
     @Override
@@ -18,18 +18,18 @@ public class FlightDB {
 
         FlightDB flightDB = (FlightDB) o;
 
-        return flightsMap.equals(flightDB.flightsMap);
+        return flightsList.equals(flightDB.flightsList);
     }
 
     @Override
     public int hashCode() {
-        return flightsMap.hashCode();
+        return flightsList.hashCode();
     }
 
     @Override
     public String toString() {
         return "FlightDB{" +
-                "flightsMap=" + flightsMap +
+                "flightsList=" + flightsList +
                 '}';
     }
 }
