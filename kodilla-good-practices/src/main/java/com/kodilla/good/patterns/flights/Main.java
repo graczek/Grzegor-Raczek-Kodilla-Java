@@ -14,7 +14,7 @@ public class Main {
         Flight flight6 = new Flight("LHR", "LAX");
         Flight flight7 = new Flight("LAX", "DUB");
         Flight flight8 = new Flight("ATH", "WRO");
-        Flight flight9 = new Flight("WRO", "BCN");
+        Flight flight9 = new Flight("WRO", "LHR");
 
         FlightDB flightDB = new FlightDB();
         List<Flight> flightsList = flightDB.getFlightsList();
@@ -34,6 +34,8 @@ public class Main {
         DestinationCityFlightFinderService destinationCityFlightsFinder = new DestinationCityFlightFinderService();
         destinationCityFlightsFinder.findFlight("WRO", flightsList);
 
+        ConnectionCityFlightFinder connectionFinder = new ConnectionCityFlightFinder();
+        connectionFinder.findFlight("BCN", "LHR", flightsList);
 
     }
 }
