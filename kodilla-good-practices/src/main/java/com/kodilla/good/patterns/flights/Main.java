@@ -1,7 +1,6 @@
 package com.kodilla.good.patterns.flights;
 
 import java.util.List;
-import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,14 +27,16 @@ public class Main {
         flightsList.add(flight8);
         flightsList.add(flight9);
 
-        OriginCityFlightFinderService originCityFlightsFinder = new OriginCityFlightFinderService();
-        originCityFlightsFinder.findFlight("WAW", flightsList);
+        FlightFinderService finder1 = new FlightFinderService();
 
-        DestinationCityFlightFinderService destinationCityFlightsFinder = new DestinationCityFlightFinderService();
-        destinationCityFlightsFinder.findFlight("WRO", flightsList);
+        List<Flight> fromWawFlights = finder1.findOriginFlights("WAW", flightsList);
+        System.out.println(fromWawFlights);
 
-        ConnectionCityFlightFinder connectionFinder = new ConnectionCityFlightFinder();
-        connectionFinder.findFlight("BCN", "LHR", flightsList);
+        List<Flight> toWroFlights = finder1.findDestinationFlights("WRO", flightsList);
+        System.out.println(toWroFlights);
+
+        List<Flight> wroLhrConnectionFlights = finder1.findConnectionFlights("BCN", "WAW", "LHR", flightsList);
+        System.out.println(wroLhrConnectionFlights);
 
     }
 }
