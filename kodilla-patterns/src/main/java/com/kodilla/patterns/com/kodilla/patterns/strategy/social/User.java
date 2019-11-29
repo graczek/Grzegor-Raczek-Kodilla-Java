@@ -13,7 +13,7 @@ public class User {
     }
 
     public void share(String post) {
-        System.out.println("Shared on: " + post);
+        System.out.println(post);
         socialPublisher.share();
     }
 
