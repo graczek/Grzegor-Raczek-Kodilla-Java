@@ -3,7 +3,7 @@ import java.util.List;
 
 public class SudokuElement {
 
-    public static int EMPTY = -1;
+    public static final int EMPTY = -1;
 
     private Integer value;
     private List<Integer> possibleValuesList;
