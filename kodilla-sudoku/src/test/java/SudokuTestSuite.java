@@ -51,4 +51,26 @@ public class SudokuTestSuite {
         //then
         Assert.assertTrue(containsAll);
     }
+
+//    @Test
+//    public void testSudokuBoardDrawerDrawsCorrectBoard() {
+//        //given
+//        SudokuBoard board = new SudokuBoard();
+//        //when
+//        BoardCreator.prapareNewBoard(board);
+//        //then
+//        BoardDrawer.printSudokuBoard(board);
+//
+//    }
+//
+//    @Test
+//    public void testSudokuBoardDrawerPrintsPossibleValues() {
+//        //given
+//        SudokuBoard board = new SudokuBoard();
+//        //when
+//        BoardCreator.prapareNewBoard(board);
+//        //then
+//        BoardDrawer.printSudokuBoardPossibleValues(board);
+//
+//    }
 }
