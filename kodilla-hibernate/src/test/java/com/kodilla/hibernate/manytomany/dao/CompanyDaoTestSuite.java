@@ -77,9 +77,11 @@ public class CompanyDaoTestSuite {
         employeeDao.save(johnWayne);
         int johnWayneId = johnWayne.getId();
         List<Employee> employeesWithLastName = employeeDao.retrieveEmployeesByLastname("Wayne");
+        Employee employeeFound = employeesWithLastName.get(0);
 
         //then
         Assert.assertEquals(1, employeesWithLastName.size());
+        Assert.assertTrue(employeeFound.getLastname().contains("Wayne"));
 
         //CleanUp
         employeeDao.deleteById(johnWayneId);
@@ -97,11 +99,14 @@ public class CompanyDaoTestSuite {
         //when
         companyDao.save(softwareMachines);
         int softwareMachinesId = softwareMachines.getId();
+        int johnRamboId = johnRambo.getId();
 
         List<Company> companiesWithThreeFirstLetters = companyDao.retrieveCompaniesByFirstThreeLetters("Sof");
+        Company companyFound = companiesWithThreeFirstLetters.get(0);
 
         //Then
         Assert.assertEquals(1, companiesWithThreeFirstLetters.size());
+        Assert.assertTrue(companyFound.getName().contains("Machines"));
 
         //CleanUp
         companyDao.deleteById(softwareMachinesId);
