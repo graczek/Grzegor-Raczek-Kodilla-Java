@@ -47,6 +47,8 @@ public class InvoiceDaoTestSuite {
 
         //then
         Assert.assertNotEquals(0, id);
+        Assert.assertEquals(invoice.getNumber(), "2");
+        Assert.assertTrue(invoice.getItems().contains(item1));
 
         //CleanUp
         try {
