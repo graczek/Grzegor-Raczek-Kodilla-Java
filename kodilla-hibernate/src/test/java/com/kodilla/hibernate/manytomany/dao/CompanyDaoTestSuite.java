@@ -99,7 +99,6 @@ public class CompanyDaoTestSuite {
         //when
         companyDao.save(softwareMachines);
         int softwareMachinesId = softwareMachines.getId();
-        int johnRamboId = johnRambo.getId();
 
         List<Company> companiesWithThreeFirstLetters = companyDao.retrieveCompaniesByFirstThreeLetters("Sof");
         Company companyFound = companiesWithThreeFirstLetters.get(0);
@@ -110,6 +109,8 @@ public class CompanyDaoTestSuite {
 
         //CleanUp
         companyDao.deleteById(softwareMachinesId);
+
+
 
     }
 }
